@@ -15,7 +15,7 @@
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">                           
+                        <tbody class="bg-white divide-y divide-gray-200">                         
                             @if ($data->count())
                                 @foreach ($data as $item)
                                     <tr>
@@ -24,10 +24,10 @@
                                         <td class="px-6 py-2">{{ $item->role }}</td>                                         
                                         <td class="px-6 py-2 flex justify-end">
                                             <x-jet-button wire:click="updateShowModal({{ $item->id }})">
-                                                {{ __('Update') }}
+                                                Editar
                                             </x-jet-button>
                                             <x-jet-danger-button class="ml-2" wire:click="deleteShowModal({{ $item->id }})">
-                                                {{ __('Delete') }}
+                                                Eliminar
                                             </x-jet-button>
                                         </td>
                                     </tr>
@@ -101,11 +101,11 @@
 
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible()')" wire:loading.attr="disabled">
-                {{ __('Nevermind') }}
+                {{ __('Não') }}
             </x-jet-secondary-button>
 
             <x-jet-danger-button class="ml-2" wire:click="delete()" wire:loading.attr="disabled">
-                {{ __('Delete Item') }}
+                {{ __('Sim') }}
             </x-jet-danger-button>
         </x-slot>
     </x-jet-dialog-modal>
