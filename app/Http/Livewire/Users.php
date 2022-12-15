@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 class Users extends Component
 {
     use WithPagination;
-    
+
     public $modalFormVisible;
     public $modalConfirmDeleteVisible;
     public $modelId;
@@ -28,13 +28,13 @@ class Users extends Component
      */
     public function rules()
     {
-        return [       
+        return [
             'name' => 'required',
             'role' => 'required',
 
         ];
-         
-        
+
+
     }
 
     /**
@@ -49,8 +49,8 @@ class Users extends Component
         // Assign the variables here
         $this->name = $data->name;
         $this->role = $data->role;
-        
-      
+
+
     }
 
     /**
@@ -61,14 +61,14 @@ class Users extends Component
      */
     public function modelData()
     {
-        return [ 
-        'name'=>$this->name,
-        'role'=>$this->role,
+        return [
+            'name' => $this->name,
+            'role' => $this->role,
         ];
-            
 
 
-        
+
+
     }
 
     /**
@@ -114,7 +114,7 @@ class Users extends Component
     public function delete()
     {
         User::destroy($this->modelId);
-        $this->modalConfirmDeleteVisible = false ;
+        $this->modalConfirmDeleteVisible = false;
         $this->resetPage();
     }
 
@@ -156,7 +156,7 @@ class Users extends Component
     {
         $this->modelId = $id;
         $this->modalConfirmDeleteVisible = true;
-    }    
+    }
 
     public function render()
     {
@@ -165,4 +165,4 @@ class Users extends Component
         ]);
     }
 
-}    
+}
