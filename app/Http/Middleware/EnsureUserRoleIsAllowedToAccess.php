@@ -54,6 +54,7 @@ class EnsureUserRoleIsAllowedToAccess
                 'admin'=>[
                     'dashboard',
                     'users',
+                    'estudante',
                     
                 ]
            ];

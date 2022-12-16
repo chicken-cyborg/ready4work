@@ -34,9 +34,7 @@ route::group(['middleware'=>[
         return view('admin.users');
     })->name('users');
 
-    Route::get('/user-permissions', function () {
-         return view('admin.user-permissions');
-    })->name('user-permissions');
+    
         
         
     });
