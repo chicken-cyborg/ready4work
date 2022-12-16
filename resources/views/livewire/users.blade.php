@@ -10,7 +10,7 @@
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Nome</th>
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</th>
                                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
+                                
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">                         
@@ -71,7 +71,7 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="deleteShowModal()" wire:loading.attr="disabled">
+            <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{ __('Cancelar') }}
             </x-jet-secondary-button>
 
@@ -79,7 +79,7 @@
                 <x-jet-button class="ml-2" wire:click="update()" wire:loading.attr="disabled">
                     {{ __('Update') }}
                 </x-jet-danger-button>  
-            @else
+            @else   
                 <x-jet-button class="ml-2" wire:click="create()" wire:loading.attr="disabled">
                     {{ __('Create') }}
                 </x-jet-danger-button>
@@ -98,7 +98,7 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible()')" wire:loading.attr="disabled">
+            <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled">
                 {{ __('Não') }}
             </x-jet-secondary-button>
 

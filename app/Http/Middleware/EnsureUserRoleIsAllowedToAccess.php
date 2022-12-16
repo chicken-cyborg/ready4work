@@ -47,13 +47,14 @@ class EnsureUserRoleIsAllowedToAccess
 
                 'user'=>[
                     'dashboard',
+                    'estudante',
                 ] ,
-            
+
+
                 'admin'=>[
                     'dashboard',
-                    'Estudante',
                     'users',
-                    'user-permissions',
+                    
                 ]
            ];
     }
