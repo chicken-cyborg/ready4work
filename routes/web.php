@@ -22,7 +22,9 @@ route::group(['middleware'=>[
    
 
 
-    Route::get('estudante', Crud::class)->name('estudante');
+    Route::get('/propostas', function () {
+        return view('propostas');
+    })->name('propostas');
 
     Route::get('/dashboard', function () {
         return view('dashboard');

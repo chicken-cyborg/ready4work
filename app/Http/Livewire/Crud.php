@@ -1,77 +1,171 @@
 <?php
 namespace App\Http\Livewire;
-use Livewire\Component;
-use App\Models\Student;
 
+use App\Models\Student;
+use Livewire\Component;
+use Livewire\WithPagination;
 class Crud extends Component
 {
-    public $students, $name, $email,$proposta, $mobile, $student_id;
-    public $isModalOpen = 0;
     
-    public function render()
-    {
-        $this->students = Student::all();
-        return view('livewire.crud');
-       
-    }
-    public function create()
-    {
-        $this->resetCreateForm();
-        $this->openModalPopover();
-    }
-    public function openModalPopover()
-    {
-        $this->isModalOpen = true;
-    }
-    public function closeModalPopover()
-    {
-        $this->isModalOpen = false;
-    }
-    private function resetCreateForm(){
-        $this->name = '';
-        $this->email = '';
-        $this->proposta = '';
-        $this->mobile = ''; 
-    }
     
-    public function store()
+    use WithPagination;
+
+    public $modalFormVisible;
+    public $modalConfirmDeleteVisible;
+
+    public $modelId;
+
+    /**
+     * Meter as variaveis aqui
+     */
+    public  $name, $email,$proposta, $mobile;
+    /**
+     * As regras de validação
+     *
+     * @return void
+     */
+    public function rules()
     {
-        $this->validate([
+        return [
             'name' => 'required',
-            'email' => 'required',
             'proposta' => 'required',
-            'mobile' => 'required',
-        ]);
-    
-        Student::updateOrCreate(['id' => $this->student_id], [
+            'email' => 'required',
+
+        ];
+
+
+    }
+
+    /**
+     * Carrega os dados do modelo.
+     *
+     * @return void
+     */
+    public function loadModel()
+    {
+        $data = Student::find($this->modelId);
+        // Designa as variaveis que queres inserir na base de dados.
+        $this->name = $data->name;
+        $this->email = $data->email;
+        $this->proposta = $data->proposta;
+        $this->mobile = $data->mobile;
+
+
+    }
+
+    /**
+     * The data for the model mapped
+     * in this component.
+     *
+     * @return void
+     */
+    public function modelData()
+    {
+        return [
             'name' => $this->name,
             'email' => $this->email,
             'proposta' => $this->proposta,
             'mobile' => $this->mobile,
-        ]);
-        session()->flash('Mensagem', $this->student_id ? 'Modificações no estudante aplicadas.' : 'Estudante criado.');
-        $this->closeModalPopover();
-        $this->resetCreateForm();
-       
-    }
-    public function edit($id)
-    {
-        $student = Student::findOrFail($id);
-        $this->student_id = $id;
-        $this->name = $student->name;
-        $this->email = $student->email;
-        $this->proposta = $student->proposta;
-        $this->mobile = $student->mobile;
-    
-        $this->openModalPopover();
-    }
-     
-    public function delete($id)
-    {
-        Student::find($id)->delete();
-        session()->flash('Mensagem', 'Estudante eliminado.');
-        
+        ];
+
+
+
+
     }
 
-    
+    /**
+     * The create function.
+     *
+     * @return void
+     */
+    public function create()
+    {
+        $this->validate();
+        Student::create($this->modelData());
+        $this->modalFormVisible = false;
+        $this->reset();
+    }
+
+    /**
+     * The read function.
+     *
+     * @return void
+     */
+    public function read()
+    {
+        return Student::paginate(5);
+    }
+
+    /**
+     * The update function
+     *
+     * @return void
+     */
+    public function update()
+    {
+        $this->validate();
+        Student::find($this->modelId)->update($this->modelData());
+        $this->modalFormVisible = false;
+    }
+
+    /**
+     * The delete function.
+     *
+     * @return void
+     */
+    public function delete()
+    {
+        Student::destroy($this->modelId);
+        $this->modalConfirmDeleteVisible = false;
+        $this->resetPage();
+    }
+
+    /**
+     * Shows the create modal
+     *
+     * @return void
+     */
+    public function createShowModal()
+    {
+        $this->resetValidation();
+        $this->reset();
+        $this->modalFormVisible = true;
+    }
+
+    /**
+     * Shows the form modal
+     * in update mode.
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function updateShowModal($id)
+    {
+        $this->resetValidation();
+        $this->reset();
+        $this->modalFormVisible = true;
+        $this->modelId = $id;
+        $this->loadModel();
+    }
+
+    /**
+     * Shows the delete confirmation modal.
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function deleteShowModal($id)
+    {
+        $this->modelId = $id;
+        $this->modalConfirmDeleteVisible = true;
+    }
+
+    public function render()
+    {
+        return view('livewire.crud', [
+            'data' => $this->read(),
+        ]);
+    }
+
 }
+    
