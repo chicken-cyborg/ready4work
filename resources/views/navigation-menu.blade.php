@@ -18,11 +18,14 @@
                     </x-jet-nav-link>
                 </div>
 
+                @if(Auth::user()->role == 'admin' || @ Auth::user()->role == 'user')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('propostas') }}" :active="request()->routeIs('propostas')">
-                        {{ __('Propostas') }}
+                        {{ __('Gestão de propostas') }}
                     </x-jet-nav-link>
                 </div>
+                @endif
+
                 @if(Auth::user()->role == 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
