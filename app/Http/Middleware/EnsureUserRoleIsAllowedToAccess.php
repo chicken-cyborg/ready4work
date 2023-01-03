@@ -56,6 +56,11 @@ class EnsureUserRoleIsAllowedToAccess
                     'users',
                     'propostas',
                     
+                ],
+
+                'empresa'=>[
+                    'dashboard',
+                    
                 ]
            ];
     }

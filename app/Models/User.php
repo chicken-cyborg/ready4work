@@ -73,6 +73,7 @@ class User extends Authenticatable
         return [
             'admin' => 'Admin',
             'user' => 'User',
+            'empresa'=>'Empresa',
         ];
     }
 }
