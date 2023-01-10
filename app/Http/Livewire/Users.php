@@ -21,8 +21,15 @@ class Users extends Component
     public $name;
     public $email;
     public $password;
+
+    protected $listeners=[
+        'userUpdate'=>'updateCloseModal',
+        'closeModal'=>'updateCloseModal',
+
+    ];
+
     /**
-     * The validation rules
+     * Regras de validação
      *
      * @return void
      */
@@ -38,8 +45,8 @@ class Users extends Component
     }
 
     /**
-     * Loads the model data
-     * of this component.
+     * Carrega o modelo da data
+     * do componente
      *
      * @return void
      */
@@ -53,39 +60,12 @@ class Users extends Component
 
     }
 
-    /**
-     * The data for the model mapped
-     * in this component.
-     *
-     * @return void
-     */
-    public function modelData()
-    {
-        return [
-            'name' => $this->name,
-            'role' => $this->role,
-        ];
+    
 
-
-
-
-    }
+  
 
     /**
-     * The create function.
-     *
-     * @return void
-     */
-    public function create()
-    {
-        $this->validate();
-        User::create($this->modelData());
-        $this->modalFormVisible = false;
-        $this->reset();
-    }
-
-    /**
-     * The read function.
+     * Função que lê
      *
      * @return void
      */
@@ -94,20 +74,10 @@ class Users extends Component
         return User::paginate(5);
     }
 
-    /**
-     * The update function
-     *
-     * @return void
-     */
-    public function update()
-    {
-        $this->validate();
-        User::find($this->modelId)->update($this->modelData());
-        $this->modalFormVisible = false;
-    }
+    
 
     /**
-     * The delete function.
+     * Função de delete.
      *
      * @return void
      */
@@ -119,7 +89,7 @@ class Users extends Component
     }
 
     /**
-     * Shows the create modal
+     * Mostra o modal de criação
      *
      * @return void
      */
@@ -131,24 +101,30 @@ class Users extends Component
     }
 
     /**
-     * Shows the form modal
-     * in update mode.
+     * Mostra o modal
+     * em modo de edição
      *
      * @param  mixed $id
      * @return void
      */
     public function updateShowModal($id)
     {
+        
         $this->resetValidation();
         $this->reset();
         $this->modalFormVisible = true;
         $this->modelId = $id;
         $this->loadModel();
+        
     }
 
+    public function updateCloseModal($modelId){
+        $this->modalFormVisible = false;
+    }
+    
     /**
-     * Shows the delete confirmation modal.
-     *
+     * Mostra o modal de confimação
+     * 
      * @param  mixed $id
      * @return void
      */

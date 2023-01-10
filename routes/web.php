@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Crud;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,11 +41,15 @@ route::group(['middleware'=>[
         
     });
 
+    route::get('/teste', function () {
+        return view('teste');
+    });
 
-
-    Route::get('/', function () {
+    route::get('/', function () {
         return view('welcome');
         })->name('welcome');
+    
+
 
 
         
