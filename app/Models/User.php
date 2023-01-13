@@ -76,4 +76,9 @@ class User extends Authenticatable
             'empresa'=>'Empresa',
         ];
     }
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

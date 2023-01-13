@@ -23,11 +23,11 @@ route::group(['middleware'=>[
 
 
     Route::get('/propostas', function () {
-        return view('propostas');
+        return view('UserSide.propostas');
     })->name('propostas');
 
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('UserSide.dashboard');
     })->name('dashboard');
     
 
@@ -42,11 +42,11 @@ route::group(['middleware'=>[
     });
 
     route::get('/teste', function () {
-        return view('teste');
+        return view('UserSide.teste');
     });
 
     route::get('/', function () {
-        return view('welcome');
+        return view('UserSide.welcome');
         })->name('welcome');
     
 
