@@ -20,7 +20,7 @@ class UsersUpdate extends Component
 
     public $teste = true;
 
-
+ 
     public function mount($modelId=0, $modalFormVisible=true){
         
         
@@ -43,7 +43,7 @@ class UsersUpdate extends Component
      */
     public function rules()
     {
-        return [
+        return [ 
             'name' => 'required',
             'role' => 'required',
             'password'=>'required',
@@ -88,7 +88,7 @@ class UsersUpdate extends Component
         User::create($this->modelData(true));
         $this->reset();
         $this->emit("userCreate");
-    }
+    } 
 
     public function closemodal(){
 

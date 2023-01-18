@@ -54,7 +54,7 @@
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="closemodal()" wire:loading.attr="disabled">
                 {{ __('Cancelar') }}
-            </x-jet-secondary-button>
+           </x-jet-secondary-button>
 
            @if ($modelId)
                 <x-jet-button class="ml-2" wire:click="update()" wire:loading.attr="disabled">

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-class Student extends Model
+class Proposta extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -28,6 +28,8 @@ class Student extends Model
 
         static::creating(function ($model) {
             $model->user_id =Auth()->id();
+            $model->name = Auth::user()->name;
+            $model->email = Auth::user()->email;
         });
     }
 }

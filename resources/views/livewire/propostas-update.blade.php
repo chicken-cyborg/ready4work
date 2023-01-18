@@ -1,22 +1,14 @@
 <div>
     {{-- Formulario --}}
-    <x-jet-dialog-modal wire:model="modalFormVisible">
+    <x-jet-dialog-modal wire:model="teste">
         <x-slot name="title">
             {{ __('Editar proposta') }}
         </x-slot>
 
         <x-slot name="content">
-            <div class="mt-4">
-                <x-jet-label for="name" value="{{ __('Nome') }}" />
-                <x-jet-input wire:model="name" id="" class="block mt-1 w-full" type="text" />
-                @error('name') <span class="error">{{ $message }}</span> @enderror
-            </div>
+           
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input wire:model="email" id="" class="block mt-1 w-full" type="text" />
-                @error('email') <span class="error">{{ $message }}</span> @enderror
-            </div>
+            
 
             <div class="mt-4">
                 <x-jet-label for="proposta" value="{{ __('Proposta') }}" />
@@ -35,7 +27,7 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
+            <x-jet-secondary-button wire:click="closemodal()" wire:loading.attr="disabled">
                 {{ __('Cancelar') }}
             </x-jet-secondary-button>
 

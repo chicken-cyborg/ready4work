@@ -33,7 +33,7 @@ class Users extends Component
      *
      * @return void
      */
-    public function rules()
+    public function rules() 
     {
         return [
             'name' => 'required',
@@ -57,7 +57,7 @@ class Users extends Component
         $this->name = $data->name;
         $this->role = $data->role;
 
-
+ 
     }
 
     
