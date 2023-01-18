@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Livewire;
-
-use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Proposta;
 use Livewire\Component;
 use Livewire\WithPagination;
-class Crud extends Component
+class Propostas extends Component
 {
     
     
@@ -19,6 +19,15 @@ class Crud extends Component
      * Meter as variaveis aqui
      */
     public  $name, $email,$proposta, $mobile;
+
+
+
+    protected $listeners=[
+        'crudUpdate'=>'updateCloseModal',
+        'closeModal'=>'updateCloseModal',
+        'crudCreate'=>'createCloseModal',
+    ];
+
     /**
      * As regras de validação
      *
@@ -27,9 +36,8 @@ class Crud extends Component
     public function rules()
     {
         return [
-            'name' => 'required',
             'proposta' => 'required',
-            'email' => 'required',
+           
 
         ];
 
@@ -43,7 +51,7 @@ class Crud extends Component
      */
     public function loadModel()
     {
-        $data = Student::find($this->modelId);
+        $data = Proposta::find($this->modelId);
         // Designa as variaveis que queres inserir na base de dados.
         $this->name = $data->name;
         $this->email = $data->email;
@@ -53,60 +61,20 @@ class Crud extends Component
 
     }
 
-    /**
-     * The data for the model mapped
-     * in this component.
-     *
-     * @return void
-     */
-    public function modelData()
-    {
-        return [
-            'name' => $this->name,
-            'email' => $this->email,
-            'proposta' => $this->proposta,
-            'mobile' => $this->mobile,
-        ];
+   
 
-
-
-
-    }
-
-    /**
-     * The create function.
-     *
-     * @return void
-     */
-    public function create()
-    {
-        $this->validate();
-        Student::create($this->modelData());
-        $this->modalFormVisible = false;
-        $this->reset();
-    }
-
-    /**
+    /** 
      * The read function.
      *
      * @return void
      */
     public function read()
     {
-        return Student::paginate(5);
+
+        return Proposta::whereUserId(Auth::id())->paginate(20);
     }
 
-    /**
-     * The update function
-     *
-     * @return void
-     */
-    public function update()
-    {
-        $this->validate();
-        Student::find($this->modelId)->update($this->modelData());
-        $this->modalFormVisible = false;
-    }
+
 
     /**
      * The delete function.
@@ -115,7 +83,7 @@ class Crud extends Component
      */
     public function delete()
     {
-        Student::destroy($this->modelId);
+        Proposta::destroy($this->modelId);
         $this->modalConfirmDeleteVisible = false;
         $this->resetPage();
     }
@@ -128,7 +96,6 @@ class Crud extends Component
     public function createShowModal()
     {
         $this->resetValidation();
-        $this->reset();
         $this->modalFormVisible = true;
     }
 
@@ -148,6 +115,17 @@ class Crud extends Component
         $this->loadModel();
     }
 
+
+    public function updateCloseModal($modelId){
+        $this->modalFormVisible = false;
+    }
+
+    public function createCloseModal(){
+        $this->modalFormVisible = false;
+    }
+    
+
+
     /**
      * Shows the delete confirmation modal.
      *
@@ -162,7 +140,7 @@ class Crud extends Component
 
     public function render()
     {
-        return view('livewire.crud', [
+        return view('livewire.propostas', [
             'data' => $this->read(),
         ]);
     }

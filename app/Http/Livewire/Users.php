@@ -25,7 +25,7 @@ class Users extends Component
     protected $listeners=[
         'userUpdate'=>'updateCloseModal',
         'closeModal'=>'updateCloseModal',
-
+        'userCreate'=>'createCloseModal',
     ];
 
     /**
@@ -33,7 +33,7 @@ class Users extends Component
      *
      * @return void
      */
-    public function rules()
+    public function rules() 
     {
         return [
             'name' => 'required',
@@ -57,7 +57,7 @@ class Users extends Component
         $this->name = $data->name;
         $this->role = $data->role;
 
-
+ 
     }
 
     
@@ -116,9 +116,14 @@ class Users extends Component
         $this->modelId = $id;
         $this->loadModel();
         
+        
     }
 
     public function updateCloseModal($modelId){
+        $this->modalFormVisible = false;
+    }
+
+    public function createCloseModal(){
         $this->modalFormVisible = false;
     }
     

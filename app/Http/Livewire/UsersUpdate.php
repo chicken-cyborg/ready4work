@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Livewire;
-
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Livewire\Component;
+use phpDocumentor\Reflection\Types\False_;
 
 class UsersUpdate extends Component
 {
@@ -13,11 +14,13 @@ class UsersUpdate extends Component
     public $role;
     public $name;
     public $email;
+    public $password;
+
     public $modalFormVisible;
 
     public $teste = true;
 
-
+ 
     public function mount($modelId=0, $modalFormVisible=true){
         
         
@@ -28,7 +31,7 @@ class UsersUpdate extends Component
             $this->modalFormVisible = $modalFormVisible;
             $this->name = $data->name;
             $this->role = $data->role;
-
+            
             
         }
     }
@@ -40,20 +43,33 @@ class UsersUpdate extends Component
      */
     public function rules()
     {
-        return [
+        return [ 
             'name' => 'required',
             'role' => 'required',
-
+            'password'=>'required',
+            'email'=>'required',
         ];
 
 
     }
 
-    public function modelData()
+    public function modelData($newpassword=false)
     {
+        if ($newpassword) {
+
+            return [
+                'name' => $this->name,
+                'role' => $this->role,
+                'password'=>Hash::make($this->password),
+                'email'=>$this->email,
+            ];
+        }
+
+
         return [
             'name' => $this->name,
             'role' => $this->role,
+            'email'=>$this->email,
         ];
     }
 
@@ -66,13 +82,18 @@ class UsersUpdate extends Component
         
     }
 
+    public function create()
+    {
+        $this->validate();
+        User::create($this->modelData(true));
+        $this->reset();
+        $this->emit("userCreate");
+    } 
+
     public function closemodal(){
 
         $this->emit("closeModal",['modalId'=>$this->modelId]);
     }
-
-
-    
 
 
     public function render()
