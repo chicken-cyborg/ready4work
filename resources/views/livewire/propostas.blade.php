@@ -26,8 +26,8 @@
                             @if ($data->count())
                                 @foreach ($data as $item)
                                     <tr>
-                                        <td class="px-6 py-2">{{ $item->mobile }}</td>      
-                                       <td class="px-6 py-2">{{ $item->proposta }}</td>      
+                                        <td class="px-6 py-2">{{ $item->proposta }}</td>      
+                                       <td class="px-6 py-2">{{ $item->mobile }}</td>      
                                               
                                                                          
                                         <td class="px-6 py-2 flex">

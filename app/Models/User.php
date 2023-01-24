@@ -77,7 +77,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function students()
+    public function propostas()
     {
         return $this->hasMany(Proposta::class);
     }
