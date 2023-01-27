@@ -30,6 +30,7 @@ class UsersUpdate extends Component
 
             $this->modalFormVisible = $modalFormVisible;
             $this->name = $data->name;
+            $this->email = $data->email;
             $this->role = $data->role;
             
             
@@ -43,13 +44,19 @@ class UsersUpdate extends Component
      */
     public function rules()
     {
+       if($this->modelId==0){
         return [ 
             'name' => 'required',
             'role' => 'required',
             'password'=>'required',
-            'email'=>'required',
-        ];
+            'email'=>'required|email:rfc,dns',
+        ];}
 
+        return [ 
+            'name' => 'required',
+            'role' => 'required',
+            'email'=>'required|email:rfc,dns',
+        ];
 
     }
 

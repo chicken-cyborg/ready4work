@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use phpDocumentor\Reflection\Types\False_;
 
 class Users extends Component
 {
@@ -28,21 +29,7 @@ class Users extends Component
         'userCreate'=>'createCloseModal',
     ];
 
-    /**
-     * Regras de validação
-     *
-     * @return void
-     */
-    public function rules() 
-    {
-        return [
-            'name' => 'required',
-            'role' => 'required',
-
-        ];
-
-
-    }
+    
 
     /**
      * Carrega o modelo da data
@@ -97,6 +84,7 @@ class Users extends Component
     {
         $this->resetValidation();
         $this->reset();
+        $this->modalFormVisible = false;
         $this->modalFormVisible = true;
     }
 

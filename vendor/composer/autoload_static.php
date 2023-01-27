@@ -40,6 +40,10 @@ class ComposerStaticInit281ee1a44776ec7a5fa2fb6558b7e781
         array (
             'voku\\' => 5,
         ),
+        't' => 
+        array (
+            'the42coders\\EuCookieConsent\\' => 28,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -187,6 +191,10 @@ class ComposerStaticInit281ee1a44776ec7a5fa2fb6558b7e781
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'the42coders\\EuCookieConsent\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
@@ -6145,6 +6153,10 @@ class ComposerStaticInit281ee1a44776ec7a5fa2fb6558b7e781
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
         'phpDocumentor\\Reflection\\Utils' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/Utils.php',
+        'the42coders\\EuCookieConsent\\EuCookieConsent' => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src/EuCookieConsent.php',
+        'the42coders\\EuCookieConsent\\EuCookieConsentFacade' => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src/EuCookieConsentFacade.php',
+        'the42coders\\EuCookieConsent\\EuCookieConsentServiceProvider' => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src/EuCookieConsentServiceProvider.php',
+        'the42coders\\EuCookieConsent\\Http\\Controllers\\EuCookieConsentController' => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src/Http/Controllers/EuCookieConsentController.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 

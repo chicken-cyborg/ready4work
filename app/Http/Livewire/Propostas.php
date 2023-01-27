@@ -20,7 +20,7 @@ class Propostas extends Component
      */
     public  $name, $email,$proposta, $mobile;
 
-
+    public $search='';
 
     protected $listeners=[
         'crudUpdate'=>'updateCloseModal',
@@ -28,21 +28,7 @@ class Propostas extends Component
         'crudCreate'=>'createCloseModal',
     ];
 
-    /**
-     * As regras de validação
-     *
-     * @return void
-     */
-    public function rules()
-    {
-        return [
-            'proposta' => 'required',
-           
-
-        ];
-
-
-    }
+    
 
     /**
      * Carrega os dados do modelo.
@@ -70,8 +56,10 @@ class Propostas extends Component
      */
     public function read()
     {
-
-        return Proposta::whereUserId(Auth::id())->paginate(20);
+        if(Auth::user()->role == 'admin'){
+            return Proposta::where('proposta','like','%'.$this->search.'%')->orderby('id','DESC')->paginate(20);
+        }
+        return Proposta::whereUserId(Auth::id())->paginate(20)->where('name','like','%'.$this->search.'%')->orderby('id','DESC');
     }
 
 
@@ -136,6 +124,10 @@ class Propostas extends Component
     {
         $this->modelId = $id;
         $this->modalConfirmDeleteVisible = true;
+    }
+
+    public function search(){
+
     }
 
     public function render()

@@ -5590,5 +5590,9 @@ return array(
     'phpDocumentor\\Reflection\\Types\\This' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/This.php',
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
     'phpDocumentor\\Reflection\\Utils' => $vendorDir . '/phpdocumentor/reflection-docblock/src/Utils.php',
+    'the42coders\\EuCookieConsent\\EuCookieConsent' => $vendorDir . '/the42coders/eu-cookie-consent/src/EuCookieConsent.php',
+    'the42coders\\EuCookieConsent\\EuCookieConsentFacade' => $vendorDir . '/the42coders/eu-cookie-consent/src/EuCookieConsentFacade.php',
+    'the42coders\\EuCookieConsent\\EuCookieConsentServiceProvider' => $vendorDir . '/the42coders/eu-cookie-consent/src/EuCookieConsentServiceProvider.php',
+    'the42coders\\EuCookieConsent\\Http\\Controllers\\EuCookieConsentController' => $vendorDir . '/the42coders/eu-cookie-consent/src/Http/Controllers/EuCookieConsentController.php',
     'voku\\helper\\ASCII' => $vendorDir . '/voku/portable-ascii/src/voku/helper/ASCII.php',
 );

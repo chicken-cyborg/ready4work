@@ -27,14 +27,18 @@ class PropostaUpdate extends Component
         
         
         $this->modelId = $modelId;
+       
         if ($modelId != 0) {
             $data = Proposta::find($this->modelId);
-
+            if($data){
             $this->modalFormVisible = $modalFormVisible;
             $this->proposta = $data->proposta;
             $this->mobile = $data->mobile;
             
-            
+             }
+                 else{
+                     $this->modelId = 0;
+                     }
         } 
     }
 
@@ -43,7 +47,7 @@ class PropostaUpdate extends Component
         return [
             
             'proposta'=>'required',
-            'mobile'=>'required',
+            'mobile'=>'required|max:9',
         ];
 
 

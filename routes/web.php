@@ -42,7 +42,7 @@ route::group(['middleware'=>[
     });
 
     route::get('/teste', function () {
-        return view('UserSide.teste');
+        return view('teste');
     });
 
     route::get('/', function () {
@@ -53,4 +53,3 @@ route::group(['middleware'=>[
 
 
         
-  

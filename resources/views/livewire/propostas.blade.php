@@ -1,49 +1,84 @@
-<div>   
-    
-    <x-jet-button wire:click="createShowModal()">
-                    Criar
-                </x-jet-button>
-            
-                
+<div>
+    <div class="flex">
+
+
+        <button wire:click="createShowModal()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-6 ">
+            Criar
+        </button>
+
+        <div class="flex-grow pl-[500px]">
+            <form>
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input type="search" id="default-search" wire:model="search"
+                        class="block w-full	 p-4 pl-10  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-300 focus:border-gray-300 dark:bg-gray-200 dark:border-gray-200 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-grey-300 dark:focus:border-grey-300"
+                        placeholder="Search Mockups, Logos..." required>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
     <div class="flex flex-col">
-    
+
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        
+
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 
-            
+
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg min-w-full">
-                
+
                     <table class="min-w-full divide-y divide-gray-200 ">
                         <thead>
                             <tr>
-                               <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Proposta</th>
-                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Telefone</th>
-                                <th class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Açoes</th>
+                                <th
+                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Nome</th>
+                                <th
+                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Proposta</th>
+                                <th
+                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Telefone</th>
+                                <th
+                                    class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Açoes</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200 min-w-max">                         
+                        <tbody class="bg-white divide-y divide-gray-200 min-w-max">
                             @if ($data->count())
                                 @foreach ($data as $item)
-                                    <tr>
-                                        <td class="px-6 py-2">{{ $item->proposta }}</td>      
-                                       <td class="px-6 py-2">{{ $item->mobile }}</td>      
-                                              
-                                                                         
-                                        <td class="px-6 py-2 flex">
-                                            <div class="flex justify-start">
-                                            <x-jet-button wire:click="updateShowModal({{ $item->id }})">
-                                                Editar
-                                            </x-jet-button> 
-                                            <x-jet-danger-button class="ml-2" wire:click="deleteShowModal({{ $item->id }})">
-                                                Eliminar
-                                            </x-jet-button>
+                                    <tr class="bg-gray-50">
+                                        @if (Auth::user()->role == 'admin')
+                                            <td class="px-6 py-2">{{ $item->name }}</td>
+                                        @endif
+                                        <td class="px-6 py-2">{{ $item->proposta }}</td>
+                                        <td class="px-6 py-2">{{ $item->mobile }}</td>
+
+
+                                        <td class="px-6 py-2 justify-center flex">
+                                            <div class="flex justify-center">
+                                                <x-jet-button wire:click="updateShowModal({{ $item->id }})">
+                                                    Editar
+                                                </x-jet-button>
+                                                <x-jet-danger-button class="ml-2"
+                                                    wire:click="deleteShowModal({{ $item->id }})">
+                                                    Eliminar
+                                                    </x-jet-button>
                                             </div>
                                         </td>
-                                       
+
                                     </tr>
                                 @endforeach
-                            @else 
+                            @else
                                 <tr>
                                     <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">Sem propostas</td>
                                 </tr>
@@ -54,16 +89,16 @@
             </div>
         </div>
     </div>
-   
+
 
     @if ($modalFormVisible)
-    <div >
-    <livewire:proposta-update :modelId="$modelId"  />
-    </div>
+        <div>
+            <livewire:proposta-update :modelId="$modelId" />
+        </div>
     @endif
-   
 
-    
+
+
 
     {{-- The Delete Modal --}}
     <x-jet-dialog-modal wire:model="modalConfirmDeleteVisible">
