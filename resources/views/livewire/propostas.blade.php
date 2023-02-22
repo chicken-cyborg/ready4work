@@ -6,6 +6,12 @@
             Criar
         </button>
 
+
+        <button wire:click="sortBy('name')" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-6 ">
+            Ordenar por nome
+        </button>
+
+
         <div class="flex-grow pl-[500px]">
             <form>
                 <label for="default-search"
@@ -39,9 +45,46 @@
                     <table class="min-w-full divide-y divide-gray-200 ">
                         <thead>
                             <tr>
-                                <th
-                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                    Nome</th>
+
+    
+                                
+                                @if (Auth::user()->role == 'admin')
+                                <th   class="flex flex-row" >
+                                    <div >
+                                    <a href="#"  wire:click="sortBy('name')">
+                                        @if ($sortField === 'name')
+                                            @if ($sortDirection === 'asc')
+                                            
+                                            
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sort-ascending-letters mt-2 ml-1 " width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M15 10v-5c0 -1.38 .62 -2 2 -2s2 .62 2 2v5m0 -3h-4" />
+                                            <path d="M19 21h-4l4 -7h-4" />
+                                            <path d="M4 15l3 3l3 -3" />
+                                            <path d="M7 6v12" />
+                                          </svg>
+                                         
+                        
+                                          @else
+                                        
+                                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sort-descending-letters mt-2 ml-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M15 21v-5c0 -1.38 .62 -2 2 -2s2 .62 2 2v5m0 -3h-4" />
+                                            <path d="M19 10h-4l4 -7h-4" />
+                                            <path d="M4 15l3 3l3 -3" />
+                                            <path d="M7 6v12" />
+                                          </svg>
+                                        
+                                        
+                                          @endif
+                                          @endif
+                                        
+                                    </a>
+                                    </div>
+                                    <div>
+                                    <p class="mr-6 ml-3 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Nome</p>
+                                   </div>
+                                </th> @endif
                                 <th
                                     class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                     Proposta</th>

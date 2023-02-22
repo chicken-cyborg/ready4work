@@ -44,7 +44,7 @@
                     <span class="error">Role invalida</span>
                 @enderror
             </div>
-
+ 
             @if (!$modelId)
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />

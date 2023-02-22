@@ -15,6 +15,9 @@ class Propostas extends Component
 
     public $modelId;
 
+    public $sortField = 'name';
+    public $sortDirection = 'asc';
+
     /**
      * Meter as variaveis aqui
      */
@@ -57,10 +60,23 @@ class Propostas extends Component
     public function read()
     {
         if(Auth::user()->role == 'admin'){
-            return Proposta::where('proposta','like','%'.$this->search.'%')->orderby('id','DESC')->paginate(20);
+            return Proposta::where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(20);
         }
-        return Proposta::whereUserId(Auth::id())->paginate(20)->where('name','like','%'.$this->search.'%')->orderby('id','DESC');
+        return Proposta::whereUserId(Auth::id())->where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(20);
+      
+
     }
+
+
+    public function sortBy($field)
+{
+    if ($this->sortField === $field) {
+        $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+        $this->sortField = $field;
+        $this->sortDirection = 'asc';
+    }
+}
 
 
 
@@ -126,9 +142,7 @@ class Propostas extends Component
         $this->modalConfirmDeleteVisible = true;
     }
 
-    public function search(){
-
-    }
+    
 
     public function render()
     {
