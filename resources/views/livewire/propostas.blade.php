@@ -7,9 +7,7 @@
         </button>
 
 
-        <button wire:click="sortBy('name')" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-6 ">
-            Ordenar por nome
-        </button>
+       
 
 
         <div class="flex-grow pl-[500px]">
@@ -121,13 +119,16 @@
 
                                     </tr>
                                 @endforeach
+                                {{ $data->links() }}
                             @else
                                 <tr>
                                     <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">Sem propostas</td>
                                 </tr>
+                               
                             @endif
                         </tbody>
                     </table>
+                  
                 </div>
             </div>
         </div>

@@ -1,10 +1,16 @@
 <div>
     {{-- Formulario --}}
     <x-jet-dialog-modal wire:model="teste">
+        @if ($modelId)
         <x-slot name="title">
             {{ __('Editar proposta') }}
         </x-slot>
+        @else
 
+        <x-slot name="title">
+            {{ __('Criar proposta') }}
+        </x-slot>
+@endif
         <x-slot name="content">
            
 
@@ -18,7 +24,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="mobile" value="{{ __('Telefone') }}" />
-                <x-jet-input wire:model.defer="mobile" id="" class="block mt-1 w-full" type="text" />
+                <x-jet-input wire:model.defer="mobile" id="" class="block mt-1 w-full" type="number" max="999999999" min="900000000" />
                 @error('mobile') <span class="error">{{ $message }}</span> @enderror
             </div>  
 

@@ -6,8 +6,6 @@ use Livewire\Component;
 use Livewire\WithPagination;
 class Propostas extends Component
 {
-    
-    
     use WithPagination;
 
     public $modalFormVisible;
@@ -15,6 +13,7 @@ class Propostas extends Component
 
     public $modelId;
 
+    
     public $sortField = 'name';
     public $sortDirection = 'asc';
 
@@ -60,9 +59,9 @@ class Propostas extends Component
     public function read()
     {
         if(Auth::user()->role == 'admin'){
-            return Proposta::where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(20);
+            return Proposta::where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(3);
         }
-        return Proposta::whereUserId(Auth::id())->where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(20);
+        return Proposta::whereUserId(Auth::id())->where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(10);
       
 
     }
@@ -122,6 +121,8 @@ class Propostas extends Component
 
     public function updateCloseModal($modelId){
         $this->modalFormVisible = false;
+        $this->resetValidation();
+        $this->reset();
     }
 
     public function createCloseModal(){

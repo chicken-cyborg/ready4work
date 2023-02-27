@@ -23,6 +23,10 @@ class Users extends Component
     public $email;
     public $password;
 
+    public $search='';
+
+    public $sortField = 'name';
+    public $sortDirection = 'asc';
     protected $listeners=[
         'userUpdate'=>'updateCloseModal',
         'closeModal'=>'updateCloseModal',
@@ -58,9 +62,20 @@ class Users extends Component
      */
     public function read()
     {
-        return User::paginate(5);
+      
+            return User::where('name','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(20);
+        
     }
 
+    public function sortBy($field)
+{
+    if ($this->sortField === $field) {
+        $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+        $this->sortField = $field;
+        $this->sortDirection = 'asc';
+    }
+}
     
 
     /**
