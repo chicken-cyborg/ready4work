@@ -44,7 +44,7 @@ class EnsureUserRoleIsAllowedToAccess
     private function userAccessRole()
     {
        return[
-
+ 
                 'user'=>[
                     'dashboard',
                     'propostas',
