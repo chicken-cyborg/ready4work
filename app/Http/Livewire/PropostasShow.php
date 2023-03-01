@@ -20,33 +20,16 @@ class PropostasShow extends Component
 
     public $search='';
     
-    /**
-     * Carrega os dados do modelo.
-     *
-     * @return void
-     */
-    public function loadModel()
-    {
-        $data = Proposta::find($this->modelId);
-        // Designa as variaveis que queres inserir na base de dados.
-        $this->name = $data->name;
-        $this->email = $data->email;
-        $this->proposta = $data->proposta;
-        $this->mobile = $data->mobile;
+    public $per_page=6;
+    
 
 
+    public function load(){
+        $this->per_page+=3; 
+        
     }
 
-
-     /** 
-     * Função de leitura.
-     *
-     * @return void
-     */
-    public function read()
-    {
-            return Proposta::where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(3);
-    }
+    
 
 
 
@@ -65,7 +48,7 @@ class PropostasShow extends Component
     public function render()
     {
         return view('livewire.propostas-show', [
-            'data' => $this->read(),
+            'data' =>Proposta::paginate($this->per_page),
         ]);
     }
 }

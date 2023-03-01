@@ -1,4 +1,4 @@
-<div> 
+<div > 
     <div class="flex">
     <button wire:click="createShowModal()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-4 px-6 ">
         Criar
