@@ -47,7 +47,7 @@ class PropostaUpdate extends Component
         return [
             
             'proposta'=>'required',
-            'mobile'=>'required| numeric',
+            'mobile'=>'required| numeric |max:999999999',
         ];
 
 

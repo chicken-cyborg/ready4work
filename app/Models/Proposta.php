@@ -11,6 +11,7 @@ class Proposta extends Model
     protected $fillable = [
         'name', 
         'email', 
+        'estado',
         'proposta',
         'mobile',
         'user_id'

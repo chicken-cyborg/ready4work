@@ -59,7 +59,7 @@ class Propostas extends Component
     public function read()
     {
         if(Auth::user()->role == 'admin'){
-            return Proposta::where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(3);
+            return Proposta::where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(10);
         }
         return Proposta::whereUserId(Auth::id())->where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(10);
       

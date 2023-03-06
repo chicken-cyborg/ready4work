@@ -14,13 +14,8 @@ class PropostasShow extends Component
 
     public  $name, $email,$proposta, $mobile;
 
-
-    public $sortField = 'proposta';
-    public $sortDirection = 'asc';
-
-    public $search='';
     
-    public $per_page=6;
+    public $per_page=3;
     
 
 
@@ -33,15 +28,6 @@ class PropostasShow extends Component
 
 
 
-    public function sortBy($field)
-{
-    if ($this->sortField === $field) {
-        $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
-    } else {
-        $this->sortField = $field;
-        $this->sortDirection = 'asc';
-    }
-}
 
 
 
