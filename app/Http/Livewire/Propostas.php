@@ -20,7 +20,7 @@ class Propostas extends Component
     /**
      * Meter as variaveis aqui
      */
-    public  $name, $email,$proposta, $mobile;
+    public  $name, $email,$proposta, $mobile, $estado;
 
     public $search='';
 
@@ -45,6 +45,8 @@ class Propostas extends Component
         $this->email = $data->email;
         $this->proposta = $data->proposta;
         $this->mobile = $data->mobile;
+        $this->estado = $data->estado;
+
 
 
     }
@@ -61,7 +63,7 @@ class Propostas extends Component
         if(Auth::user()->role == 'admin'){
             return Proposta::where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(10);
         }
-        return Proposta::whereUserId(Auth::id())->where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(10);
+        return Proposta::whereUserId(Auth::id())->paginate(10);
       
 
     }

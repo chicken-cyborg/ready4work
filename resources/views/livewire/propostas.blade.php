@@ -88,6 +88,10 @@
                                 <th
                                     class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                     Telefone</th>
+
+                                    <th
+                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Estado</th>
                                 <th
                                     class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                     Açoes</th>
@@ -102,6 +106,7 @@
                                         @endif
                                         <td class="px-6 py-2">{{ $item->proposta }}</td>
                                         <td class="px-6 py-2">{{ $item->mobile }}</td>
+                                        <td class="px-6 py-2">{{ $item->estado }}</td>
 
 
                                         <td class="px-6 py-2 justify-center flex">
