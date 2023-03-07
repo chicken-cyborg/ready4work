@@ -12,7 +12,7 @@ class PropostasShow extends Component
     use WithPagination;
     public $modelId;
 
-    public  $name, $email,$proposta, $mobile, $estado;
+    public  $name, $email,$proposta, $mobile, $estado, $role;
 
     
     public $per_page=3;
@@ -33,8 +33,20 @@ class PropostasShow extends Component
 
     public function render()
     {
+        if(Auth::user()->role == 'empresa'){
         return view('livewire.propostas-show', [
-            'data' =>Proposta::whereEstado('aprovado')->paginate($this->per_page),
-        ]);
+            'data' =>Proposta::whereEstado('aprovado')->whereRole('user')->paginate($this->per_page),
+        ]);}
+
+        if(Auth::user()->role == 'user'){
+        return view('livewire.propostas-show', [
+            'data' =>Proposta::whereEstado('aprovado')->whereRole('empresa')->paginate($this->per_page),
+        ]);}
+
+
+        if(Auth::user()->role == 'admin'){
+            return view('livewire.propostas-show', [
+                'data' =>Proposta::whereEstado('aprovado')->paginate($this->per_page),
+            ]);}
     }
 }

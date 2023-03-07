@@ -60,6 +60,7 @@ class EnsureUserRoleIsAllowedToAccess
 
                 'empresa'=>[
                     'dashboard',
+                    'propostas',
                     
                 ]
            ];

@@ -20,7 +20,7 @@ class Propostas extends Component
     /**
      * Meter as variaveis aqui
      */
-    public  $name, $email,$proposta, $mobile, $estado;
+    public  $name, $email,$proposta, $mobile, $estado,$role;
 
     public $search='';
 
@@ -46,9 +46,26 @@ class Propostas extends Component
         $this->proposta = $data->proposta;
         $this->mobile = $data->mobile;
         $this->estado = $data->estado;
+        $this->role = $data->role;
 
 
 
+    }
+
+    public function check($id)
+    {
+        $newestado = Proposta::find($id);
+        $newestado->estado = 'aprovado';
+        $newestado->save();
+        
+
+    }
+
+    public function rep($id)
+    {
+        $newestado = Proposta::find($id);
+        $newestado->estado = 'reprovado';
+        $newestado->save();
     }
 
    

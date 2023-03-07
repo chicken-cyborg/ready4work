@@ -10,6 +10,7 @@ class Proposta extends Model
     use HasFactory;
     protected $fillable = [
         'name', 
+        'role',
         'email', 
         'estado',
         'proposta',
@@ -31,6 +32,7 @@ class Proposta extends Model
             $model->user_id =Auth()->id();
             $model->name = Auth::user()->name;
             $model->email = Auth::user()->email;
+            $model->role=Auth::user()->role;
         });
     }
 }

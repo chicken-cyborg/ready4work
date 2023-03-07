@@ -88,10 +88,10 @@
                                 <th
                                     class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                     Telefone</th>
-
+                                @if (Auth::user()->role == 'admin')
                                     <th
                                     class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                    Estado</th>
+                                    Estado</th>@endif
                                 <th
                                     class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                     Açoes</th>
@@ -102,11 +102,43 @@
                                 @foreach ($data as $item)
                                     <tr class="bg-gray-50">
                                         @if (Auth::user()->role == 'admin')
-                                            <td class="px-6 py-2">{{ $item->name }}</td>
+                                            <td class="px-6 py-2">{{ $item->name }} <br> <p class="text-base text-[#32CD32]">({{$item->role}})</p></td>
                                         @endif
                                         <td class="px-6 py-2">{{ $item->proposta }}</td>
                                         <td class="px-6 py-2">{{ $item->mobile }}</td>
-                                        <td class="px-6 py-2">{{ $item->estado }}</td>
+                                        @if(Auth::user()->role="admin")
+                                        <td class="px-6 py-2 ">{{ $item->estado }}
+                                          @if(!$item->estado=='aprovado' || $item->estado=='pendente')
+                                            <button
+                                              type="button" wire:click="check({{ $item->id }})"
+                                              data-te-ripple-init
+                                              data-te-ripple-color="light"
+                                              class="inline-block rounded-full   uppercase leading-normal  shadow-md transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check" width="21" height="21" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <circle cx="12" cy="12" r="9" />
+                                                <path d="M9 12l2 2l4 -4" />
+                                              </svg>
+                                            </button>
+
+                                            <button
+                                              type="button" wire:click="rep({{ $item->id }})"
+                                              data-te-ripple-init
+                                              data-te-ripple-color="light"
+                                              class="inline-block rounded-full   uppercase leading-normal  shadow-md transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <circle cx="12" cy="12" r="9" />
+                                                <path d="M10 10l4 4m0 -4l-4 4" />
+                                              </svg>
+                                            </button>
+                                            @endif
+
+                                            
+
+
+                                        </td>
+                                        @endif
 
 
                                         <td class="px-6 py-2 justify-center flex">
