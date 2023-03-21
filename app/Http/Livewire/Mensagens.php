@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use App\Models\mensagem;
-use App\Models\Proposta;
 use Livewire\Component;
 
 class Mensagens extends Component
@@ -12,6 +11,11 @@ class Mensagens extends Component
     public $proposta_id;
     public $mensagem;
 
+
+
+    
+
+    
 
     public function rules()
     {
@@ -25,24 +29,24 @@ class Mensagens extends Component
     }
 
 
-    public function modelData()
-    {
-            return [
-                
-                
-                'mensagem'=>$this->mensagem,
-                'proposta_id'=>$this->proposta_id,
-                
-            ];
-         
-    }
+   public function resetFields(){
+    $this->mensagem='';
+   }
 
 
     public function create(){
 
         $this->validate();
-        mensagem::create($this->modelData());
-        $this->reset();
+        mensagem::create([
+            'mensagem'=>$this->mensagem,
+            'proposta_id'=>$this->proposta_id
+        ]);
+        $this->resetFields();
+        $this->emit("close");
+        
+
+        
+       
     }
 
 

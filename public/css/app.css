@@ -1016,11 +1016,11 @@ select {
 .z-10 {
   z-index: 10;
 }
-.z-20 {
-  z-index: 20;
-}
 .-z-50 {
   z-index: -50;
+}
+.z-20 {
+  z-index: 20;
 }
 .col-span-6 {
   grid-column: span 6 / span 6;
@@ -1703,8 +1703,8 @@ select {
 .pt-8 {
   padding-top: 2rem;
 }
-.pl-\[500px\] {
-  padding-left: 500px;
+.pr-\[500px\] {
+  padding-right: 500px;
 }
 .pl-10 {
   padding-left: 2.5rem;
@@ -1717,9 +1717,6 @@ select {
 }
 .pt-7 {
   padding-top: 1.75rem;
-}
-.pr-\[500px\] {
-  padding-right: 500px;
 }
 .text-left {
   text-align: left;
