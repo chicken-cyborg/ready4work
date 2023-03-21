@@ -15,7 +15,7 @@ class PropostasShow extends Component
     public  $name, $email,$proposta, $mobile, $estado, $role;
 
     
-    public $per_page=3;
+    public $per_page=6;
     
 
 

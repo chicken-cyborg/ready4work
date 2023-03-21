@@ -1891,25 +1891,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
-.text-green-700 {
+.text-\[\#32CD32\] {
   --tw-text-opacity: 1;
-  color: rgb(21 128 61 / var(--tw-text-opacity));
+  color: rgb(50 205 50 / var(--tw-text-opacity));
 }
 .text-teal-900 {
   --tw-text-opacity: 1;
   color: rgb(19 78 74 / var(--tw-text-opacity));
-}
-.text-\[\#7CFC00\] {
-  --tw-text-opacity: 1;
-  color: rgb(124 252 0 / var(--tw-text-opacity));
-}
-.text-\[\#4CBB17\] {
-  --tw-text-opacity: 1;
-  color: rgb(76 187 23 / var(--tw-text-opacity));
-}
-.text-\[\#32CD32\] {
-  --tw-text-opacity: 1;
-  color: rgb(50 205 50 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;

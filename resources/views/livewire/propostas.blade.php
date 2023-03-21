@@ -16,7 +16,7 @@
                     </div>
                     <input type="search" id="default-search" wire:model="search"
                         class="z-10 block w-full	 p-4 pl-10  text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-300 focus:border-gray-300 dark:bg-gray-200 dark:border-gray-200 dark:placeholder-gray-400 dark:text-gray-600 dark:focus:ring-grey-300 dark:focus:border-grey-300"
-                        placeholder="Search Mockups, Logos..." required>
+                        placeholder="Propostas..." required>
                 </div>
             </form>
 
@@ -106,10 +106,11 @@
                                         @endif
                                         <td class="px-6 py-2">{{ $item->proposta }}</td>
                                         <td class="px-6 py-2">{{ $item->mobile }}</td>
-                                        @if(Auth::user()->role="admin")
-                                        <td class="px-6 py-2 ">{{ $item->estado }}
-                                          @if(!$item->estado=='aprovado' || $item->estado=='pendente')
-                                            <button
+                                        
+                                        <td class="px-6 py-2 ">{{ $item->estado }}@if(!Auth::user()->role == 'admin')</td>@endif
+                                          @if($item->estado=='pendente' && Auth::user()->role == 'admin')
+                                            <br>
+                                          <button
                                               type="button" wire:click="check({{ $item->id }})"
                                               data-te-ripple-init
                                               data-te-ripple-color="light"
@@ -120,7 +121,7 @@
                                                 <path d="M9 12l2 2l4 -4" />
                                               </svg>
                                             </button>
-
+                                        
                                             <button
                                               type="button" wire:click="rep({{ $item->id }})"
                                               data-te-ripple-init
@@ -133,12 +134,8 @@
                                               </svg>
                                             </button>
                                             @endif
-
-                                            
-
-
                                         </td>
-                                        @endif
+                                        
 
 
                                         <td class="px-6 py-2 justify-center flex">

@@ -23,6 +23,11 @@ class Proposta extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function mensagem()
+    {
+        return $this->hasMany(mensagem::class);
+    }
+
     public static function boot()
     {
         parent::boot();
@@ -33,6 +38,7 @@ class Proposta extends Model
             $model->name = Auth::user()->name;
             $model->email = Auth::user()->email;
             $model->role=Auth::user()->role;
+            $model->mobile=Auth::user()->telefone;
         });
     }
 }

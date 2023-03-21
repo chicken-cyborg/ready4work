@@ -10,6 +10,7 @@ class PShow extends Component
 {
 
     public $modalFormVisible=false;
+    public $modalFormVisible2=false;
     public $item; 
     
    public function modalVisible(){
@@ -20,7 +21,13 @@ class PShow extends Component
     $this->modalFormVisible=false;
    }
 
+  public function mensagem(){
+    $this->modalFormVisible2=true;
+  }
 
+  public function mensagemclose(){
+    $this->modalFormVisible2=false;
+  }
 
 
     public function render()

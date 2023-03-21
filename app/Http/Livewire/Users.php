@@ -65,7 +65,7 @@ class Users extends Component
     public function read()
     {
       
-            return User::where('name','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(20);
+            return User::where('name','like','%'.$this->search.'%')->orwhere('role','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(20);
         
     }
 

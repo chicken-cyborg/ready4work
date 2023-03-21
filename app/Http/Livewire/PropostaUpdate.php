@@ -9,7 +9,6 @@ class PropostaUpdate extends Component
 {
 
 
-    
 
     public $modalFormVisible;
     public $modalConfirmDeleteVisible;
@@ -33,7 +32,7 @@ class PropostaUpdate extends Component
             if($data){
             $this->modalFormVisible = $modalFormVisible;
             $this->proposta = $data->proposta;
-            $this->mobile = $data->mobile;
+            
             
              }
                  else{
@@ -47,7 +46,7 @@ class PropostaUpdate extends Component
         return [
             
             'proposta'=>'required',
-            'mobile'=>'required| numeric |max:999999999',
+            
         ];
 
 
@@ -57,7 +56,7 @@ class PropostaUpdate extends Component
     {
             return [
                 
-                'mobile' => $this->mobile,
+                
                 'proposta'=>$this->proposta,
                 
             ];

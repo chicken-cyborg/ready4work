@@ -18,18 +18,11 @@
 
             <div class="mt-4">
                 <x-jet-label for="proposta" value="{{ __('Proposta') }}" />
-                <x-jet-input wire:model.defer="proposta" id="" class="block mt-1 w-full" type="text" />
+                <textarea wire:model.defer="proposta" id="" class="block mt-1 w-full"> </textarea>
                 @error('proposta') <span class="error">{{ $message }}</span> @enderror
             </div>  
 
-            <div class="mt-4">
-                <x-jet-label for="mobile" value="{{ __('Telefone') }}" />
-                <x-jet-input wire:model.defer="mobile" id="" class="block mt-1 w-full" type="number" max="999999999" min="900000000" />
-                @error('mobile') <span class="error">{{ $message }}</span> @enderror
-            </div>  
-
-                 
-                  
+            
         </x-slot>
 
         <x-slot name="footer">
