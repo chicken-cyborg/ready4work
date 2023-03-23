@@ -8,6 +8,6 @@ class LayoutTeste extends Component
 {
     public function render()
     {
-        return view('livewire.layout-teste');
+        return view('livewire.layout.layout-teste');
     }
-}
+} 

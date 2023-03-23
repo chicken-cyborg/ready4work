@@ -48,6 +48,7 @@ class EnsureUserRoleIsAllowedToAccess
                 'user'=>[
                     'dashboard',
                     'propostas',
+                    'mensagem',
                 ] ,
 
 
@@ -55,12 +56,14 @@ class EnsureUserRoleIsAllowedToAccess
                     'dashboard',
                     'users',
                     'propostas',
+                    'mensagem',
                     
                 ],
 
                 'empresa'=>[
                     'dashboard',
                     'propostas',
+                    'mensagem',
                     
                 ]
            ];

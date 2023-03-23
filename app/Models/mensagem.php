@@ -15,7 +15,7 @@ class mensagem extends Model
         'usersend_id'
     ];
 
-    public function proposta()
+    public function propostas()
     {
         return $this->belongsTo(Proposta::class);
     }

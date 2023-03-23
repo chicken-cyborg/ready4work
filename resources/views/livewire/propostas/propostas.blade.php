@@ -104,7 +104,7 @@
                                         @if (Auth::user()->role == 'admin')
                                             <td class="px-6 py-2">{{ $item->name }} <br> <p class="text-base text-[#32CD32]">({{$item->role}})</p></td>
                                         @endif
-                                        <td class="px-6 py-2">{{ $item->proposta }}</td>
+                                        <td class="px-6 py-2 break-word">{{ $item->proposta }}</td>
                                         <td class="px-6 py-2">{{ $item->mobile }}</td>
                                         
                                         <td class="px-6 py-2 ">{{ $item->estado }}@if(!Auth::user()->role == 'admin')</td>@endif

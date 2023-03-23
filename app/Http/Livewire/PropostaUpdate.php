@@ -88,6 +88,6 @@ class PropostaUpdate extends Component
     
     public function render()
     {
-        return view('livewire.propostas-update');
+        return view('livewire.propostas.propostas-update');
     }
 }

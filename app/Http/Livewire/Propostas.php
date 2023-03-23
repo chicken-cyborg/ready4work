@@ -166,7 +166,7 @@ class Propostas extends Component
 
     public function render()
     {
-        return view('livewire.propostas', [
+        return view('livewire.propostas.propostas', [
             'data' => $this->read(),
         ]);
     }

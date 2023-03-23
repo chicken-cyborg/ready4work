@@ -146,7 +146,7 @@ class Users extends Component
 
     public function render()
     {
-        return view('livewire.users', [
+        return view('livewire.user.users', [
             'data' => $this->read(),
         ]);
     }

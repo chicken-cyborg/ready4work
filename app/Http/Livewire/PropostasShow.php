@@ -5,7 +5,7 @@ use App\Models\Proposta;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
-
+ 
 class PropostasShow extends Component
 {
 
@@ -34,18 +34,18 @@ class PropostasShow extends Component
     public function render()
     {
         if(Auth::user()->role == 'empresa'){
-        return view('livewire.propostas-show', [
+        return view('livewire.propostas.propostas-show', [
             'data' =>Proposta::whereEstado('aprovado')->whereRole('user')->paginate($this->per_page),
         ]);}
 
         if(Auth::user()->role == 'user'){
-        return view('livewire.propostas-show', [
+        return view('livewire.propostas.propostas-show', [
             'data' =>Proposta::whereEstado('aprovado')->whereRole('empresa')->paginate($this->per_page),
         ]);}
 
 
         if(Auth::user()->role == 'admin'){
-            return view('livewire.propostas-show', [
+            return view('livewire.propostas.propostas-show', [
                 'data' =>Proposta::whereEstado('aprovado')->paginate($this->per_page),
             ]);}
     }

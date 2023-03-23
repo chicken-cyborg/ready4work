@@ -56,6 +56,6 @@ class Mensagens extends Component
 
     public function render()
     {
-        return view('livewire.mensagem');
+        return view('livewire.mensagem.mensagem');
     }
 }

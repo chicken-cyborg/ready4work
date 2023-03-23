@@ -35,6 +35,6 @@ class PShow extends Component
 
     public function render()
     {
-        return view('livewire.p-show');
+        return view('livewire.propostas.p-show');
     }
 }

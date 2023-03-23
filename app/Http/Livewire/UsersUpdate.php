@@ -105,6 +105,6 @@ class UsersUpdate extends Component
 
     public function render()
     {
-        return view('livewire.users-update');
+        return view('livewire..user.users-update');
     }
 }
