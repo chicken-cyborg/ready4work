@@ -6,23 +6,43 @@ use App\Models\Proposta;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\DB;
+
 class MensagemShow extends Component
 {
     use WithPagination;
 
-    public  $name, $email,$proposta, $mobile, $usersend_id,$proposta_id,$mensagem;
+    public $modelId,$m;
 
+    public $modalConfirmDeleteVisible=false;
 
+    public $modalFormVisible=false;
     public $per_page=6;
     
-
-
     public function load(){
         $this->per_page+=3; 
         
     
     }
+
+    public function delete()
+    {
+        mensagem::destroy($this->modelId);
+        $this->resetPage();
+    }
+
+    public function deleteShowModal($id)
+    {
+        $this->modelId = $id;
+        $this->modalConfirmDeleteVisible = true;
+    }
+
+    public function modalVisible(){
+        $this->modalFormVisible=true;
+       }
+    
+       public function closemodal(){
+        $this->modalFormVisible=false;
+       }
 
 
  
@@ -30,9 +50,20 @@ class MensagemShow extends Component
     public function render()
     {
         
-        $propostas = Proposta::with('mensagens')->where('user_id', '2' )->get();
+        $propostas = Proposta::with('mensagens')->where('user_id', Auth::id() )->get();
+
+        if(Auth::user()->role=="admin"){
+
+        $propostas = Proposta::with('mensagens')->get();
+
+
+        }
+        
+        
+        
         return view('livewire.mensagem.mensagem-show',[
             'propostas'=>$propostas,
+           
         ]);
     }
 }

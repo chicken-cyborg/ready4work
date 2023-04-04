@@ -6,11 +6,11 @@
             <button class="bg-blue-600 text-white rounded-lg px-4 py-2 text-lg" wire:click="modalVisible">Saber mais</button>
           </div>
        
-          <div>
+          <div> 
             {{-- Formulario --}}
             <x-jet-dialog-modal wire:model="modalFormVisible">
              
-                <x-slot name="title">
+                <x-slot name="title"> 
                     
                 </x-slot>
               

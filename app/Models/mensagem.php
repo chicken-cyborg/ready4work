@@ -15,10 +15,20 @@ class mensagem extends Model
         'usersend_id'
     ];
 
-    public function propostas()
+    public function proposta()
     {
         return $this->belongsTo(Proposta::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'usersend_id');
+
+    }
+
+    
+
+    
     
 
     public static function boot()

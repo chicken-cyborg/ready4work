@@ -11,7 +11,7 @@ class PShow extends Component
 
   protected $listeners=[
     'close'=>'mensagemclose',
-];
+]; 
     public $modalFormVisible=false;
     public $modalFormVisible2=false;
     public $item; 
