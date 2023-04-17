@@ -50,16 +50,28 @@ class MensagemShow extends Component
     public function render()
     {
         
-        $propostas = Proposta::with('mensagens')->where('user_id', Auth::id() )->get();
+        
+
+       
 
         if(Auth::user()->role=="admin"){
-
+          
         $propostas = Proposta::with('mensagens')->get();
 
 
         }
-        
-        
+
+        else{
+            $propostas = Proposta::with('mensagens')
+        ->where('user_id', Auth::id())
+        ->has('mensagens')
+        ->get();
+
+    if ($propostas->isEmpty()) {
+    return view('livewire.mensagem.norecord');
+    }
+        }
+  
         
         return view('livewire.mensagem.mensagem-show',[
             'propostas'=>$propostas,

@@ -1,37 +1,34 @@
 <div>
   
-       
+ 
   
     @foreach ($propostas as $item)
     @foreach ($item->mensagens as $m)
-   
+    
        
   
-      <div class="bg-gray-200 rounded-lg p-4 flex items-center">
-
-        <div class="mr-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-circle" width="52" height="52" viewBox="0 0 24 24" stroke-width="1" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <circle cx="12" cy="12" r="9" />
-            <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
-          </svg>
-          </div>
-        <span class="text-gray-700 mr-4">
-          <i class="fa fa-info-circle"></i>
-        </span>
-        <button class="text-gray-700 hover:text-gray-900 font-semibold" wire:click="modalVisible">
-            
-           <p class="text-left"> Enviado por:  {{$m->User->name}}</p>	 Referente a proposta: {{$item->proposta}} 
-          
-        </button>
-
-        <x-jet-danger-button class="ml-4"
-        wire:click="deleteShowModal({{ $m->id }})">
-        Eliminar
-        </x-jet-button>
-
+    <div class="bg-gray-200 rounded-lg p-4 flex items-center mt-2">
+      <div class="mr-4  ">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-circle" width="52" height="52" viewBox="0 0 24 24" stroke-width="1" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <circle cx="12" cy="12" r="9" />
+          <line x1="12" y1="8" x2="12" y2="12" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
       </div>
+      <span class="text-gray-700 mr-4">
+        <i class="fa fa-info-circle"></i>
+      </span>
+      <button class="text-gray-700 hover:text-gray-900 font-semibold" wire:click="modalVisible({{ $m->id }})">
+        <p class="text-left"> Enviado por: {{$m->User->name}}</p> Referente a proposta: {{$item->proposta}} 
+      </button>
+      <div class="ml-auto mr-4">
+        <x-jet-danger-button wire:click="deleteShowModal({{ $m->id }})">
+          Eliminar
+        </x-jet-danger-button>
+      </div>
+    </div>
+    
       
         
 
@@ -112,10 +109,10 @@
 
 
     
-    
-   
+  
   @endforeach 
   @endforeach 
+  
 
         
    
