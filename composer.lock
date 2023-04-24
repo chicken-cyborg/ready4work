@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7537d5511a241265d66de8a718b044ba",
+    "content-hash": "5d4852bc62d4e40cb77dc584a30d8ca8",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5443,6 +5443,67 @@
                 }
             ],
             "time": "2022-05-21T13:34:40+00:00"
+        },
+        {
+            "name": "the42coders/eu-cookie-consent",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/42coders/eu-cookie-consent.git",
+                "reference": "50c10d1d8dbabd2056601b31af705016fc97fec6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/42coders/eu-cookie-consent/zipball/50c10d1d8dbabd2056601b31af705016fc97fec6",
+                "reference": "50c10d1d8dbabd2056601b31af705016fc97fec6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "*",
+                "php": ">7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.2",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "the42coders\\EuCookieConsent\\EuCookieConsentServiceProvider"
+                    ],
+                    "aliases": {
+                        "EuCookieConsent": "the42coders\\EuCookieConsent\\EuCookieConsentFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "the42coders\\EuCookieConsent\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Max Hutschenreiter",
+                    "email": "max@42coders.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "To make your site compliant to the EU GDPR law you can use this package and customize it to your needs.",
+            "homepage": "https://github.com/42coders/eu-cookie-consent",
+            "keywords": [
+                "42coders",
+                "eu-cookie-consent"
+            ],
+            "support": {
+                "issues": "https://github.com/42coders/eu-cookie-consent/issues",
+                "source": "https://github.com/42coders/eu-cookie-consent/tree/v1.0.5"
+            },
+            "time": "2022-10-11T08:26:06+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

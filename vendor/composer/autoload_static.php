@@ -40,6 +40,10 @@ class ComposerStaticInit281ee1a44776ec7a5fa2fb6558b7e781
         array (
             'voku\\' => 5,
         ),
+        't' => 
+        array (
+            'the42coders\\EuCookieConsent\\' => 28,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -187,6 +191,10 @@ class ComposerStaticInit281ee1a44776ec7a5fa2fb6558b7e781
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'the42coders\\EuCookieConsent\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
@@ -572,8 +580,11 @@ class ComposerStaticInit281ee1a44776ec7a5fa2fb6558b7e781
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Livewire\\LayoutTeste' => __DIR__ . '/../..' . '/app/Http/Livewire/LayoutTeste.php',
+        'App\\Http\\Livewire\\PShow' => __DIR__ . '/../..' . '/app/Http/Livewire/PShow.php',
         'App\\Http\\Livewire\\PropostaUpdate' => __DIR__ . '/../..' . '/app/Http/Livewire/PropostaUpdate.php',
         'App\\Http\\Livewire\\Propostas' => __DIR__ . '/../..' . '/app/Http/Livewire/Propostas.php',
+        'App\\Http\\Livewire\\PropostasShow' => __DIR__ . '/../..' . '/app/Http/Livewire/PropostasShow.php',
         'App\\Http\\Livewire\\Users' => __DIR__ . '/../..' . '/app/Http/Livewire/Users.php',
         'App\\Http\\Livewire\\UsersUpdate' => __DIR__ . '/../..' . '/app/Http/Livewire/UsersUpdate.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -587,6 +598,7 @@ class ComposerStaticInit281ee1a44776ec7a5fa2fb6558b7e781
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Proposta' => __DIR__ . '/../..' . '/app/Models/Proposta.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\mensagem' => __DIR__ . '/../..' . '/app/Models/mensagem.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -6145,6 +6157,10 @@ class ComposerStaticInit281ee1a44776ec7a5fa2fb6558b7e781
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
         'phpDocumentor\\Reflection\\Utils' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/Utils.php',
+        'the42coders\\EuCookieConsent\\EuCookieConsent' => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src/EuCookieConsent.php',
+        'the42coders\\EuCookieConsent\\EuCookieConsentFacade' => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src/EuCookieConsentFacade.php',
+        'the42coders\\EuCookieConsent\\EuCookieConsentServiceProvider' => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src/EuCookieConsentServiceProvider.php',
+        'the42coders\\EuCookieConsent\\Http\\Controllers\\EuCookieConsentController' => __DIR__ . '/..' . '/the42coders/eu-cookie-consent/src/Http/Controllers/EuCookieConsentController.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 

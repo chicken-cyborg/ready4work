@@ -29,6 +29,10 @@ route::group(['middleware'=>[
     Route::get('/dashboard', function () {
         return view('UserSide.dashboard');
     })->name('dashboard');
+
+    Route::get('/mensagem', function () {
+        return view('UserSide.mensagem');
+    })->name('mensagem');
     
 
 
@@ -42,7 +46,7 @@ route::group(['middleware'=>[
     });
 
     route::get('/teste', function () {
-        return view('UserSide.teste');
+        return view('teste');
     });
 
     route::get('/', function () {
@@ -53,4 +57,3 @@ route::group(['middleware'=>[
 
 
         
-  

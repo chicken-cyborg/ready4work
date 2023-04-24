@@ -6,8 +6,6 @@ use Livewire\Component;
 use Livewire\WithPagination;
 class Propostas extends Component
 {
-    
-    
     use WithPagination;
 
     public $modalFormVisible;
@@ -15,12 +13,16 @@ class Propostas extends Component
 
     public $modelId;
 
+    
+    public $sortField = 'name';
+    public $sortDirection = 'asc';
+
     /**
      * Meter as variaveis aqui
      */
-    public  $name, $email,$proposta, $mobile;
+    public  $name, $email,$proposta, $mobile, $estado,$role;
 
-
+    public $search='';
 
     protected $listeners=[
         'crudUpdate'=>'updateCloseModal',
@@ -28,21 +30,7 @@ class Propostas extends Component
         'crudCreate'=>'createCloseModal',
     ];
 
-    /**
-     * As regras de validação
-     *
-     * @return void
-     */
-    public function rules()
-    {
-        return [
-            'proposta' => 'required',
-           
-
-        ];
-
-
-    }
+    
 
     /**
      * Carrega os dados do modelo.
@@ -57,8 +45,27 @@ class Propostas extends Component
         $this->email = $data->email;
         $this->proposta = $data->proposta;
         $this->mobile = $data->mobile;
+        $this->estado = $data->estado;
+        $this->role = $data->role;
 
 
+
+    }
+
+    public function check($id)
+    {
+        $newestado = Proposta::find($id);
+        $newestado->estado = 'aprovado';
+        $newestado->save();
+        
+
+    }
+
+    public function rep($id)
+    {
+        $newestado = Proposta::find($id);
+        $newestado->estado = 'reprovado';
+        $newestado->save();
     }
 
    
@@ -70,9 +77,24 @@ class Propostas extends Component
      */
     public function read()
     {
+        if(Auth::user()->role == 'admin'){
+            return Proposta::where('proposta','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(10);
+        }
+        return Proposta::whereUserId(Auth::id())->paginate(10);
+      
 
-        return Proposta::whereUserId(Auth::id())->paginate(20);
     }
+
+
+    public function sortBy($field)
+{
+    if ($this->sortField === $field) {
+        $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+        $this->sortField = $field;
+        $this->sortDirection = 'asc';
+    }
+}
 
 
 
@@ -118,6 +140,8 @@ class Propostas extends Component
 
     public function updateCloseModal($modelId){
         $this->modalFormVisible = false;
+        $this->resetValidation();
+        $this->reset();
     }
 
     public function createCloseModal(){
@@ -138,9 +162,11 @@ class Propostas extends Component
         $this->modalConfirmDeleteVisible = true;
     }
 
+    
+
     public function render()
     {
-        return view('livewire.propostas', [
+        return view('livewire.propostas.propostas', [
             'data' => $this->read(),
         ]);
     }

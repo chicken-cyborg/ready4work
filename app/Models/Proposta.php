@@ -10,7 +10,9 @@ class Proposta extends Model
     use HasFactory;
     protected $fillable = [
         'name', 
+        'role',
         'email', 
+        'estado',
         'proposta',
         'mobile',
         'user_id'
@@ -21,7 +23,14 @@ class Proposta extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function boot()
+    public function mensagens()
+    {
+        return $this->hasMany(mensagem::class);
+    }
+
+   
+
+ public static function boot()
     {
         parent::boot();
 
@@ -30,6 +39,8 @@ class Proposta extends Model
             $model->user_id =Auth()->id();
             $model->name = Auth::user()->name;
             $model->email = Auth::user()->email;
+            $model->role=Auth::user()->role;
+            $model->mobile=Auth::user()->telefone;
         });
     }
 }

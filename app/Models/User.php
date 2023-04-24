@@ -10,7 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -24,12 +24,13 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var string[]
-     */
+     */ 
     public $fillable = [
         'name',
         'email',
         'password',
         'role',
+        'telefone',
     ];
 
     /**
@@ -77,8 +78,17 @@ class User extends Authenticatable
         ];
     }
 
-    public function students()
+    public function propostas()
     {
         return $this->hasMany(Proposta::class);
     }
+
+    public function mensagens()
+    {
+        return $this->hasMany(mensagem::class);
+    }
+
+    
+    
+    
 }

@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class=" max-w-6xl	 mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-0">
+            <div class="bg-gray-50 overflow-hidden shadow-xl sm:rounded-lg min-w-0">
                 @livewire('propostas')
             </div>
         </div>

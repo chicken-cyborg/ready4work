@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use phpDocumentor\Reflection\Types\False_;
 
 class Users extends Component
 {
@@ -22,27 +23,17 @@ class Users extends Component
     public $email;
     public $password;
 
+    public $search='';
+
+    public $sortField = 'name';
+    public $sortDirection = 'asc';
     protected $listeners=[
         'userUpdate'=>'updateCloseModal',
         'closeModal'=>'updateCloseModal',
         'userCreate'=>'createCloseModal',
     ];
 
-    /**
-     * Regras de validação
-     *
-     * @return void
-     */
-    public function rules() 
-    {
-        return [
-            'name' => 'required',
-            'role' => 'required',
-
-        ];
-
-
-    }
+    
 
     /**
      * Carrega o modelo da data
@@ -60,6 +51,8 @@ class Users extends Component
  
     }
 
+   
+
     
 
   
@@ -71,9 +64,20 @@ class Users extends Component
      */
     public function read()
     {
-        return User::paginate(5);
+      
+            return User::where('name','like','%'.$this->search.'%')->orwhere('role','like','%'.$this->search.'%')->orderBy($this->sortField, $this->sortDirection)->paginate(10);
+        
     }
 
+    public function sortBy($field)
+{
+    if ($this->sortField === $field) {
+        $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+        $this->sortField = $field;
+        $this->sortDirection = 'asc';
+    }
+}
     
 
     /**
@@ -97,6 +101,7 @@ class Users extends Component
     {
         $this->resetValidation();
         $this->reset();
+        $this->modalFormVisible = false;
         $this->modalFormVisible = true;
     }
 
@@ -141,7 +146,7 @@ class Users extends Component
 
     public function render()
     {
-        return view('livewire.users', [
+        return view('livewire.user.users', [
             'data' => $this->read(),
         ]);
     }

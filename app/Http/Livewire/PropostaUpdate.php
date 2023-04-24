@@ -9,7 +9,6 @@ class PropostaUpdate extends Component
 {
 
 
-    
 
     public $modalFormVisible;
     public $modalConfirmDeleteVisible;
@@ -27,14 +26,18 @@ class PropostaUpdate extends Component
         
         
         $this->modelId = $modelId;
+       
         if ($modelId != 0) {
             $data = Proposta::find($this->modelId);
-
+            if($data){
             $this->modalFormVisible = $modalFormVisible;
             $this->proposta = $data->proposta;
-            $this->mobile = $data->mobile;
             
             
+             }
+                 else{
+                     $this->modelId = 0;
+                     }
         } 
     }
 
@@ -43,7 +46,7 @@ class PropostaUpdate extends Component
         return [
             
             'proposta'=>'required',
-            'mobile'=>'required',
+            
         ];
 
 
@@ -53,7 +56,7 @@ class PropostaUpdate extends Component
     {
             return [
                 
-                'mobile' => $this->mobile,
+                
                 'proposta'=>$this->proposta,
                 
             ];
@@ -85,6 +88,6 @@ class PropostaUpdate extends Component
     
     public function render()
     {
-        return view('livewire.propostas-update');
+        return view('livewire.propostas.propostas-update');
     }
 }
